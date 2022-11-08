@@ -1,0 +1,805 @@
+@font-face {
+    font-family:MainFont;
+    src:url(font/microsoft_yi_baiti.ttf); /* https://www.dafontfree.net/freefonts-microsoft-yi-baiti-f38531.htm */
+  }
+
+@font-face {
+    font-family:TextFont;
+    src:url(font/century_gothic.ttf);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background: url(img/background.png);
+    background-size: cover;
+    background-position: center
+}
+
+#title {
+    display: block;
+    text-align: center;
+    padding-top: 28vh;
+    color: #B98B60;
+    font-family: MainFont;
+    font-size: 32px;
+    letter-spacing: 15px;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+#title.active {
+    opacity: 0;
+}
+
+#hamburgerMenu {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    cursor: pointer;
+    transform: scale(0.7);
+    z-index: 99;
+}
+
+#hamburgerMenu svg rect {
+    fill: #B98B60;
+    transition: 0.3s;
+}
+
+#hamburgerMenu svg.active rect:first-child {
+    transform: rotate(45deg) translate(10px, -19px);
+} 
+
+#hamburgerMenu svg.active rect:last-child {
+    transform: rotate(-45deg) translate(-43px, 3px);
+} 
+
+#hamburgerMenu:hover svg.active rect:first-child {
+    transform: rotate(45deg) translate(10px, -19px);
+} 
+
+#hamburgerMenu:hover svg.active rect:last-child {
+    transform: rotate(-45deg) translate(-43px, 3px);
+} 
+
+#hamburgerMenu:hover svg rect:first-child {
+    transform: translateX(20px);
+}
+
+#hamburgerMenu:hover svg rect:last-child {
+    transform: translateX(-20px);
+}
+
+#darker {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: transparent;
+    height: 100vh;
+    transition: 0.3s;
+}
+
+#darker.active{
+    background-color: black;
+    opacity: 0.4;
+}
+
+#menu {
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    width: 100vw;
+    height: 100vh;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#menu ul {
+    list-style-type: none;
+    padding: 0;
+    padding-top: 10vh;
+}
+
+#menu ul li {
+    width: 150px;
+    font-family: MainFont;
+    color: rgb(127, 127, 127);
+    padding: 5px;
+    font-size: 1.4em;
+    letter-spacing: 1px;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+#menu.active ul li {
+    opacity: 1;
+    transform: translateX(100vw);
+}
+
+#menu ul li:hover {
+    color: white;
+    transform: translateX(100vw);
+}
+
+#menu ul li .text {
+    transition: transform 0.3s;
+}
+
+#menu ul li:hover .text {
+    transform: translateX(20px);
+}
+
+#menu ul li .underscore {
+    display: inline-block;
+    width: 0;
+    height: 0.07px;
+    background-color: white;
+    position: relative;
+    top: 1em;
+    left: 1px;
+    transition: 0.3s;
+}
+
+#menu ul li:hover .underscore {
+    width: 20px;
+}
+
+#kultura {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 4;
+    opacity: 0;
+    transition: 0.3s;
+    transform: translateY(100vh);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#kultura ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: inline-flex;
+    width: 85vw;
+    height: 80vh;
+}
+
+#kultura ul li {
+    box-sizing: border-box;
+    border-left: 1px solid #B98B60;
+    width: 15%;
+    transition: 0.3s;
+    padding: 20px
+}
+
+#kultura ul li.active {
+    width: 55%;
+}
+
+#kultura ul li h2 {
+    font-family: MainFont;
+    color: #B98B60;
+    text-align: center;
+    font-weight: normal;
+    font-size: 1em;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#kultura ul li.active h2 {
+    transform: translate(-27.5%,5vh);
+    font-size: 1.7em;
+}
+
+#kultura ul li span {
+    display: block;
+    font-family: TextFont;
+    font-size: 10px;
+    color: #B98B60;
+    display: block;
+    text-align: justify;
+    float: left;
+    transform: translateY(100vh);
+    width: 47%;
+    line-height: 1.4;
+    margin-top: 50px;
+    transition: 0.3s;
+}
+
+#kultura ul li.active span {
+    transform: translateY(0);
+}
+
+#kultura ul li img {
+    display: block;
+    float: right;
+    transform: translateY(100vh);
+    width: 49%;
+    transition: 0.3s;
+}
+
+#kultura ul li.active img {
+    transform: translateY(-8vh);
+}
+
+#kultura.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#kultura.fade {
+    opacity: 0;
+}
+
+#przyroda {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+    opacity: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 10vw;
+    transition: 0.3s;
+}
+
+#przyroda .faunaFlora {
+    color:#B98B60;
+    font-family: MainFont;
+    display: inline-flex;
+    gap: 10px;
+    font-size: 1.5em;
+    align-self: flex-start;
+    margin-top: 80px;
+    margin-left: 80px;
+    cursor: pointer;
+}
+
+#przyroda .faunaFlora span {
+    display: block;
+    opacity: 0.5;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: 0.3s;
+}
+
+#przyroda .faunaFlora div.active span {
+    opacity: 1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#przyroda .text {
+    color:#B98B60;
+    font-family:TextFont;
+    font-size: 10px;
+    line-height: 2;
+    width: 50vw;
+    height: 30vh;
+    position: relative;
+}
+
+#przyroda .text div {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+}
+
+#przyroda .text .active {
+    opacity: 1;
+    display: block;
+}
+
+#przyroda .img {
+    width: 25vw;
+    height: 40vh;
+    display: inline-flex;
+}
+
+#przyroda .img img {
+    transition: 0.3s;
+}
+
+#przyroda .img.fauna img.fauna {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+#przyroda .img.fauna img.flora {
+    opacity: 0.35;
+    transform: translateX(0);
+}
+
+#przyroda .img.flora img.fauna {
+    opacity: 0.35;
+    transform: translateX(100%);
+}
+
+#przyroda .img.flora img.flora {
+    opacity: 1;
+    transform: translateX(-100%);
+}
+
+#przyroda.active {
+    opacity: 1;
+}
+
+#sport {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 5;
+    transition: 0.3s;
+    transform: translateY(100vh);
+    display: inline-flex;
+}
+
+#sport .left {
+    width: 50%;
+    height: 200vh;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+}
+
+#sport .left.move-block {
+    transform: translateY(-100vh);
+}
+
+#sport .left .top {
+    width: 100%;
+    height: 100vh;
+    background: url(img/summer.png);
+    background-size: auto 100vh;
+    background-position: right;
+}
+
+#sport .left .top h2 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: normal;
+    font-family: MainFont;
+    color: #B98B60;
+    cursor: pointer;
+    text-align: center;
+    transform-origin: center;
+    transform: rotate(-90deg) translateY(calc(25vw - 30px)) translateX(-70px);
+    letter-spacing: 15px;
+}
+
+#sport .left .top .line {
+    position: absolute;
+    top: 90vh;
+    left: 49vw;
+    width: 1.3px;
+    height: 10vh;
+    background-color: #B98B60;
+    transition: 0.3s;
+}
+
+#sport .left.move-line .top .line {
+    top: 25vh;
+    height: 75vh;
+}
+
+#sport .left .bottom {
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 3vw 8vw 9vw 5vw 5vw 9vw 8vw 3vw;
+    grid-template-rows: 16vh 20vh 29vh 27vh 8vh;
+}
+
+#sport .left .bottom .items {
+    grid-column-start: 2;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    display: grid;
+    margin-top: 50px;
+    grid-template-columns: 25px auto;
+    grid-template-rows: 1.8em 1.8em 1.8em;
+    align-items: center;
+}
+
+#sport .left .bottom .items span {
+    font-family: MainFont;
+    color: #B98B60;
+    cursor: pointer;
+}
+
+#sport .left .bottom .items img {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    transition: 0.3s;
+}
+
+#sport .left .bottom .items.trekking img {
+    transform: translateY(-1.8em);
+}
+
+#sport .left .bottom .items.wspinaczkaLodowa img {
+    transform: translateY(0);
+}
+
+#sport .left .bottom .items.skitouring img {
+    transform: translateY(1.8em);
+}
+
+#sport .left .bottom .items span:nth-child(2) {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    transition: 0.3s;
+}
+
+#sport .left .bottom .items.trekking span:nth-child(2) {
+    font-size: 1.8em;
+    letter-spacing: 2px;
+}
+
+#sport .left .bottom .items span:nth-child(3) {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    transition: 0.3s;
+}
+
+#sport .left .bottom .items.wspinaczkaLodowa span:nth-child(3) {
+    font-size: 1.8em;
+    letter-spacing: 2px;
+}
+
+#sport .left .bottom .items span:nth-child(4) {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    transition: 0.3s;
+}
+
+#sport .left .bottom .items.skitouring span:nth-child(4) {
+    font-size: 1.8em;
+    letter-spacing: 2px;
+}
+
+#sport .left .bottom .text {
+    font-family: TextFont;
+    grid-column-start: 5;
+    grid-column-end: 8;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    text-align: justify;
+    font-size: 9px;
+    line-height: 2.5;
+    position: relative;
+}
+
+#sport .left .bottom .text span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    height: 280px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+#sport .left .bottom .text span.active {
+    opacity: 1;
+}
+
+#sport .left .bottom .img {
+    grid-column-start: 3;
+    grid-column-end: 7;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    position: relative;
+}
+
+#sport .left .bottom .img img {
+    transition: 0.3s;
+    opacity: 0;
+}
+
+#sport .left .bottom .img .trekking {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 6;
+}
+
+#sport .left .bottom .img .wspinaczkaLodowa {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 6;
+}
+
+#sport .left .bottom .img .skitouring {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 6;
+}
+
+#sport .left .bottom .img .active {
+    opacity: 1;
+    z-index: 7;
+}
+
+#sport .left .bottom .return {
+    font-family: MainFont;
+    color: #B98B60;
+    transform: rotate(-90deg);
+    letter-spacing: 2px;
+    cursor: pointer;
+    grid-column-start: 8;
+    grid-column-end: 9;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    align-self: self-start;
+}
+
+#sport .right {
+    width: 50%;
+    height: 200vh;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+}
+
+#sport .right.move-block {
+    transform: translateY(-100vh);
+}
+
+#sport .right .top {
+    width: 100%;
+    height: 100vh;
+    background: url(img/winter.png);
+    background-size: auto 100vh;
+    background-position: left;
+}
+
+#sport .right .top h2 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: normal;
+    font-family: MainFont;
+    color: #B98B60;
+    cursor: pointer;
+    text-align: center;
+    transform-origin: center;
+    transform: rotate(90deg) translateY(calc(25vw - 26px)) translateX(87px);
+    letter-spacing: 15px;
+}
+
+#sport .right .top .line {
+    position: absolute;
+    top: 90vh;
+    left: 51vw;
+    width: 1.3px;
+    height: 10vh;
+    background-color: #B98B60;
+    transition: 0.3s;
+}
+
+#sport .right.move-line .top .line {
+    top: 25vh;
+    height: 75vh;
+}
+
+#sport .right .bottom {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: grid;
+    grid-template-columns: 3vw 8vw 9vw 5vw 5vw 9vw 8vw 3vw;
+    grid-template-rows: 16vh 20vh 29vh 27vh 8vh;
+}
+
+#sport .right .bottom .items {
+    grid-column-start: 2;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    display: grid;
+    margin-top: 50px;
+    grid-template-columns: 25px auto;
+    grid-template-rows: 1.8em 1.8em 1.8em;
+    align-items: center;
+}
+
+#sport .right .bottom .items span {
+    font-family: MainFont;
+    color: #B98B60;
+    cursor: pointer;
+}
+
+#sport .right .bottom .items img {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    transition: 0.3s;
+}
+
+#sport .right .bottom .items.trekking img {
+    transform: translateY(-1.8em);
+}
+
+#sport .right .bottom .items.trailRunning img {
+    transform: translateY(0);
+}
+
+#sport .right .bottom .items.wspinaczka img {
+    transform: translateY(1.8em);
+}
+
+#sport .right .bottom .items span:nth-child(2) {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    transition: 0.3s;
+}
+
+#sport .right .bottom .items.trekking span:nth-child(2) {
+    font-size: 1.8em;
+    letter-spacing: 2px;
+}
+
+#sport .right .bottom .items span:nth-child(3) {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    transition: 0.3s;
+}
+
+#sport .right .bottom .items.trailRunning span:nth-child(3) {
+    font-size: 1.8em;
+    letter-spacing: 2px;
+}
+
+#sport .right .bottom .items span:nth-child(4) {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    transition: 0.3s;
+}
+
+#sport .right .bottom .items.wspinaczka span:nth-child(4) {
+    font-size: 1.8em;
+    letter-spacing: 2px;
+}
+
+#sport .right .bottom .text {
+    font-family: TextFont;
+    color: white;
+    grid-column-start: 5;
+    grid-column-end: 8;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    text-align: justify;
+    font-size: 9px;
+    line-height: 2.5;
+    position: relative;
+}
+
+#sport .right .bottom .text span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    height: 280px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+#sport .right .bottom .text .active {
+    opacity: 1;
+}
+
+#sport .right .bottom .img {
+    grid-column-start: 3;
+    grid-column-end: 7;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    position: relative;
+}
+
+#sport .right .bottom .img img {
+    transition: 0.3s;
+    opacity: 0;
+}
+
+#sport .right .bottom .img .trekking {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 6;
+}
+
+#sport .right .bottom .img .trailRunning {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 6;
+}
+
+#sport .right .bottom .img .wspinaczka {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 6;
+}
+
+#sport .right .bottom .img .active {
+    opacity: 1;
+    z-index: 7;
+}
+
+#sport .right .bottom .return {
+    font-family: MainFont;
+    color: #B98B60;
+    transform: rotate(-90deg);
+    letter-spacing: 2px;
+    cursor: pointer;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    align-self: flex-start;
+}
+
+#sport.active {
+    transform: translateY(0);
+}
+
+#sport.fade {
+    opacity: 0;
+}
